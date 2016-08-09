@@ -2,49 +2,68 @@
     - PR screenshot: “Your code is bad and you are bad. Have a bad day.”
 - Importance
     - Who's done code review before?
-        - Who's done it sync?
-            - We don't really do that, aside from maybe some pair
-              programming.
-        - Async?
-    - Pretty much all code at Mozilla gets reviewed before it gets
-      merged.
+    - All code at Mozilla gets reviewed before it gets merged.
         - It's a great way to…
             - Improve the code
                 - I like to think I'm good at this, but people still
                   find improvements to make in my stuff almost every
                   time.
+            - Also ensures it's understandable, not just executable
             - Learn the codebase and the craft
                 - It informs other people what's going on in the
                   codebase so you're not stuck with the sole
                   responsibility of maintaining it.
                 - It's as much about teaching as fixing. It's a major
                   way we bring junior people up the ladder.
-                - Tests may show the code works, but reviews ensure
-                  it's easy to understand.
+            - In fact, other things can get reviewed as well! Thanks to
+              the reviewers of this talk, willkg and rhelmer.
     - But open source runs on enthusiasm
         - Even when you're getting paid to do it
             - There's a lot of intrinsic motivation around here.
     - “Crisitunity”
-        - We can drive the desire to contribute out of people, even
-          drive out the people themselves.
+        - If we beat people up in code reviews
+            - we can drive the desire to contribute out of people
+            - even drive out the people themselves
         - Or we can magnify our power through teaching and
           encouragement.
-        - I will show you how now, brown cow.
+        - This talk is about how to do reviews that result in an
+          excellent product, excellent programmers, and good use of
+          time.
         - For example…
               …then continue on to goods/bads.
 - Good/bads
       These will be a series of before/after PR screenshots with
       discussion.
     - Clarity
-          “This makes frob() buggy.” vs. “Now if we call frob(), there
-          will be a mem leak as we allocate the whatzit.”
-        - Sometimes I say "Hey, it would be cool if X, but it doesn't
-          block the merge."
-        - One step more is "We should X eventually. I think we should
-          either do it now or else open a bug about it for later."
-        - A big "That's all I see. With those changes, I think it's
-          ready to merge." lets them (and you!) know you're done and
-          ends with a note of encouragement.
+          Most important. After all, our first duty is to the truth,
+          since nature cannot be fooled. “This makes frob() buggy.” vs.
+          “Now if we call frob(), there will be a mem leak as we
+          allocate the whatzit.”
+        - Example code snippets, REPL sessions, links to relevant
+          documentation, etc.
+            - Help bridge gaps when English isn't a first language
+            - When people don't know each other well
+            - When someone's new to the project
+            - When someone hasn't had their morning prosthetic
+              neurotransmitters
+        - If you're talking past each other, try Vidyo.
+            - Be sure to write down the result.
+            - Be considerate of the other person's time
+                - Timezone
+                - Offer to make an appointment; don't expect them to
+                  drop everything right now.
+        - Clear expectations
+            - Sometimes I say "Hey, it would be cool if X, but it
+              doesn't block the merge."
+            - One step more is "We should X eventually. I think we
+              should either do it now or else open a bug about it for
+              later."
+                - Unless it's trivial, lean toward doing it later so
+                  the PR doesn't go on forever, with nobody enjoying
+                  its benefits.
+            - A big "That's all I see. With those changes, I think it's
+              ready to merge." lets them (and you!) know you're done
+              and ends with a note of encouragement.
     - Softeners
           When you have to point out something bad
         - A spoonful of sugar
@@ -95,6 +114,8 @@
               to review it.
             - And definitely read your diffs first before submitting.
                 - Hugely worth it to get a diff viewer you like
+            - This is also a good time to make sure you've addressed
+              all the review comments.
         - Consider not burning yourself out on it; some studies have
           found a decrease in review effectiveness after about an hour.
     - Fix the rest of this file while you're at it.
@@ -108,19 +129,19 @@
     - Nitpicks
         - Having a style guide or a linter smooths things along, saves
           back-and-forth.
-            - But overzealous linters just make me angry. Code is for
-              humans.
+            - But overzealous linters the hurt the understandability of
+              code just make me angry. Code is for humans.
         - We have a bunch of decent style guides at Mozilla; you should
-          just adopt them when possible and save everybody
-          work/inconsistency.
+          just adopt them when possible and save everybody work and
+          make it easy to move code and people from project to project.
         - The webdev ones are just in a GH repo. If you don't like 'em,
           submit a PR.
         - Style: consistency within a function, then within a file,
           then within a module, then within a project. Try not to be
           adaptable. You can always do your favorite style on your
           personal stuff.
-        - Remember it costs something like $100/hr to have you sit
-          there, and throttle accordingly.
+        - Remember what it costs per hour to have you sit there, and
+          throttle accordingly.
     - Sooner is better
         - Even if you aren't comprehensive
             - You can say “I'm not going to have the time to look at
@@ -129,6 +150,9 @@
         - Stuff falls out of working memory pretty fast, and it's
           expensive to load back in.
         - It's energizing to get your patches turned around quickly.
+        - If you have to say "no" completely or ask someone to rethink
+          their approach, better to do it quickly so they don't waste
+          their time building more castles on the sand.
 - Emotional issues
     - Insecurity
           a kind of fear
@@ -167,6 +191,31 @@
             - Will it cause a lot of damage?
             - Will it be easy to fix, or is there, say, a data-exchange
               format being defined?
+        - Dealing with newcomers
+            - One time I often feel like I'm getting a bad ROI is with
+              newcomers.
+            - We’ve all got to start where we’re at. Don’t make fun of
+              scrawny people weightlifting.
+                - And we must embrace newcomers unless we plan to live
+                  forever.
+                - It's flattering when someone new wants to contribute
+                  to your project.
+            - But I don't spend much time new contribs the moment they
+              show up.
+                - But my investment parallels theirs.
+            - Leveling up
+                - They don't know where to start
+                    - Links to dev docs, a few sentences of explanation
+                      and ideas where to start
+                    - Links to resources to learn skills if they don't
+                      have them
+                - First I will fix their patch (geared for one-timers
+                  so patches don't rot)
+                    - "Polish-up" commits
+                        - So their name still gets into the commit log
+                          and they feel good
+                - Next, I just comment and request fixes
+                - Then I require tests
     - Interpersonal issues
         - When you're in person with your team, make a point of
           establishing good relations with them.
@@ -176,8 +225,9 @@
     - Other feelings
         - When you can't decide what to say (something feels too bad to
           merge), you can always fall back to articulating your
-          emotions: "I feel uncomfortable about leaving plain-text
-          passwords on disk."
+          emotions: "I’m worried that if we make the destination param
+          optional, people will write to the global datastore by
+          default, and a mess will ensue."
         - You don't have to be definitive, decisive, or an authority
           all the time. Just treat everybody like adults and articulate
           your feelings. I've said "I'm happy you want to work on that,
@@ -185,21 +235,4 @@
           elasticsearch stuff first." Inviting them into the tradeoff
           is a heckuva lot better than "no!". (If they don't mine merge
           hell, they can go for it!)
-- Dealing with newbies
-      We’ve all got to start where we’re at. Don’t make fun of scrawny
-      people weightlifting.
-    - I don't spend much time new contribs the moment they show up.
-        - But my investment parallels theirs.
-    - Leveling up
-        - They don't know where to start
-            - Links to dev docs, a few sentences of explanation and
-              ideas where to start
-            - Links to resources to learn skills if they don't have them
-        - First I will fix their patch (geared for one-timers so
-          patches don't rot)
-            - "Polish-up" commits
-                - So their name still gets into the commit log and they
-                  feel good
-        - Next, I just comment and request fixes
-        - Then I require tests
 - Call to action
